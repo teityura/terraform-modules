@@ -12,6 +12,6 @@ module "ssh_config" {
 }
 
 output "ssh_config_path" {
-  description = "Path to the created conf."
-  value       = local_file.conf.filename
+  description = "SSH config file"
+  value       = module.ssh_config.filename
 }
