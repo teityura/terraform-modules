@@ -1,0 +1,14 @@
+# Created by terraform automatically, do not edit.
+#
+# === ssh_hosts settings ===
+Host ${server.name}
+  Hostname ${server.floating_ip}
+  User ${user}
+  IdentityFile ${key}
+
+# === all host settings ===
+Host *
+  ServerAliveInterval 15
+  ServerAliveCountMax 10
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
