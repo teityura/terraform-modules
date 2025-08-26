@@ -21,4 +21,6 @@ This module generates an SSH config file based on server details.
 
 ## Outputs
 
-This module does not provide any outputs, but it creates an SSH configuration file at `/etc/ssh/ssh_config.d/99-tf-${var.project_name}.conf`.
+| Name              | Description      | Type     |
+| ----------------- | ---------------- | -------- |
+| `ssh_config_path` | SSH config path. | `string` |

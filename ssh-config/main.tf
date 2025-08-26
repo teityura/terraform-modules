@@ -1,4 +1,4 @@
-resource "local_file" "ssh_config" {
+resource "local_file" "conf" {
   content = templatefile("${path.module}/ssh_config.tftpl", {
     server   = var.server_details
     user = var.ssh_user

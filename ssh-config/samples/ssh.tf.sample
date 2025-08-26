@@ -2,11 +2,16 @@ locals {
   project_name = basename(abspath("${path.cwd}/.."))
 }
 
-module "ssh_config_generator" {
-  source = "git::https://github.com/teityura/terraform-modules.git/ssh-config"
+module "ssh_config" {
+  source = "git::https://github.com/teityura/terraform-modules.git//ssh-config"
 
   server_details = local.server_details
   project_name   = local.project_name
   ssh_user = local.config.ssh_user
   ssh_key_path = local.config.ssh_key_path
+}
+
+output "ssh_config_path" {
+  description = "Path to the created conf."
+  value       = local_file.conf.filename
 }
