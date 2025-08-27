@@ -5,6 +5,6 @@ resource "local_file" "conf" {
     key = var.ssh_key_path
   })
 
-  filename        = "/etc/ssh/ssh_config.d/99-tf-${var.project_name}.conf"
+  filename        = "/etc/ssh/ssh_config.d/99-terra-${var.project_name}.conf"
   file_permission = "0644"
 }
