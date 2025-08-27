@@ -1,5 +1,5 @@
 locals {
-  project_name = basename(abspath("${path.cwd}/.."))
+  project_name = basename(abspath("${path.module}/.."))
 }
 
 module "ssh_config" {
