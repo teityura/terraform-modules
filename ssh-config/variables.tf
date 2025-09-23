@@ -1,22 +1,22 @@
 variable "server_details" {
   description = "Server params"
   type = object({
-    name        = string
+    name = string
     floating_ip = string
   })
 }
 
 variable "ssh_user" {
-  type        = string
+  type = string
   description = "SSH user name"
 }
 
 variable "ssh_key_path" {
-  type        = string
+  type = string
   description = "SSH private key path"
 }
 
 variable "project_name" {
-  type        = string
+  type = string
   description = "Project name"
 }
