@@ -2,14 +2,6 @@
 
 This module generates an SSH config file based on server details.
 
-## Usage
-
-1.  Create `<proj_path>/config.yml`. See [./samples/config.yml.sample](./samples/config.yml.sample).
-
-2.  Create `<proj_path>/terraform/locals.tf`. See [./samples/locals.tf.sample](./samples/locals.tf.sample).
-
-3.  Create `<proj_path>/terraform/ssh.tf`. See [./samples/ssh.tf.sample](./samples/ssh.tf.sample).
-
 ## Inputs
 
 | Name             | Description              | Type                               | Default | Required |
