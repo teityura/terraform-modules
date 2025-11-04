@@ -1,19 +1,11 @@
-variable "server_details" {
+variable "servers_detail" {
   description = "Server params"
-  type = object({
+  type = map(object({
     name = string
     floating_ip = string
-  })
-}
-
-variable "ssh_user" {
-  type = string
-  description = "SSH user name"
-}
-
-variable "ssh_key_path" {
-  type = string
-  description = "SSH private key path"
+    ssh_user = string
+    ssh_key_path = string
+  }))
 }
 
 variable "project_name" {

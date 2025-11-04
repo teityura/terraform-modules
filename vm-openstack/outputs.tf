@@ -1,18 +1,25 @@
-output "server_details" {
+output "servers_detail" {
   description = "Details of the created server."
   value = {
-    id = openstack_compute_instance_v2.serv.id
-    name = openstack_compute_instance_v2.serv.name
-    private_ip = openstack_compute_instance_v2.serv.access_ip_v4
-    floating_ip = openstack_networking_floatingip_v2.fip.address
-    root_volume_id = openstack_blockstorage_volume_v3.rvol.id
+    for k, serv in openstack_compute_instance_v2.serv : k => {
+      id = serv.id
+      name = serv.name
+      private_ip = serv.access_ip_v4
+      floating_ip = openstack_networking_floatingip_v2.fip[k].address
+      root_volume_id = openstack_blockstorage_volume_v3.rvol[k].id
+      ssh_user = var.servers_config[k].ssh_user
+      ssh_key_path = var.servers_config[k].ssh_key_path
+    }
   }
 }
 
-output "volume_details" {
+output "volumes_detail" {
   description = "Details of the created data volume."
-  value = var.volume_config != null ? {
-    id = openstack_blockstorage_volume_v3.dvol[0].id
-    device = openstack_compute_volume_attach_v2.attach[0].device
-  } : null
+  value = {
+    for k, dvol in openstack_blockstorage_volume_v3.dvol : k => {
+      id = dvol.id
+      device_path = try(openstack_compute_volume_attach_v2.attach[k].device, null)
+      mount_path = try(var.volumes_config[k].volume_mount_path, null)
+    }
+  }
 }

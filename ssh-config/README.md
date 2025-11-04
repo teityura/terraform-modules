@@ -1,14 +1,12 @@
 # SSH Config Module
 
-This module generates an SSH config file based on server details.
+This module generates an SSH config file based on multiple server details.
 
 ## Inputs
 
 | Name             | Description              | Type                               | Default | Required |
 | ---------------- | ------------------------ | ---------------------------------- | ------- | :------: |
-| `server_details` | Server params            | `object({name=string, floating_ip=string})` | n/a     |   yes    |
-| `ssh_user`       | SSH user name            | `string`                           | n/a     |   yes    |
-| `ssh_key_path`   | SSH private key path     | `string`                           | n/a     |   yes    |
+| `servers_detail` | Server params            | `map(object({name=string, floating_ip=string, ssh_user=string, ssh_key_path=string}))` | n/a     |   yes    |
 | `project_name`   | Project name             | `string`                           | n/a     |   yes    |
 
 ## Outputs

@@ -1,10 +1,12 @@
 # Created by terraform automatically, do not edit.
 #
 # === ssh_hosts settings ===
+%{ for key, server in servers ~}
 Host ${server.name}
   Hostname ${server.floating_ip}
-  User ${user}
-  IdentityFile ${key}
+  User ${server.ssh_user}
+  IdentityFile ${server.ssh_key_path}
+%{ endfor ~}
 
 # === all host settings ===
 Host *
